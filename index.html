@@ -39,7 +39,7 @@
             scene.collisionsEnabled = true;
 
             // source: Adam Taylor, Thanks to MusicScore for provide music composing software.
-            const music = new BABYLON.Sound("Music", "/resources/The_Phoenixs_Song.mscz.mp3", scene, null, {
+            const music = new BABYLON.Sound("Music", "./resources/The_Phoenixs_Song.mscz.mp3", scene, null, {
                 loop: true,
                 autoplay: true
             });
@@ -125,18 +125,18 @@
             const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
             skyboxMaterial.backFaceCulling = false;
             // source: Babylon textures and resources: https://playground.babylonjs.com/textures/TropicalSunnyDay
-            skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("/resources/TropicalSunnyDay", scene);
+            skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("./resources/TropicalSunnyDay", scene);
             skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
             skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
             skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
             skybox.material = skyboxMaterial;
 
             // Hill overlook of the maze: height map made in gimp
-            const ground1 = BABYLON.MeshBuilder.CreateGroundFromHeightMap("gdhm", "/resources/rampHeightMap.jpg", { width: 80, height: 80, subdivisions: 15, maxHeight: 20 });
+            const ground1 = BABYLON.MeshBuilder.CreateGroundFromHeightMap("gdhm", "./resources/rampHeightMap.jpg", { width: 80, height: 80, subdivisions: 15, maxHeight: 20 });
 
             groundmat = new BABYLON.StandardMaterial("ground");
             // source: https://www.istockphoto.com/photo/aerial-green-grass-texture-background-top-view-from-drone-gm1160552245-317694859?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fground-texture&utm_term=ground%20texture%3A%3A%3A
-            groundmat.diffuseTexture = new BABYLON.Texture("/resources/grass3.jpg");
+            groundmat.diffuseTexture = new BABYLON.Texture("./resources/grass3.jpg");
             groundmat.specularColor = new BABYLON.Color3(0, 0, 0);
             groundmat.diffuseColor = new BABYLON.Color3(0.2, 0.2, 0);
             groundmat.ambientColor = new BABYLON.Color3(0.4, 0.4, 0.4)
@@ -159,7 +159,7 @@
 
             groundmat = new BABYLON.StandardMaterial("ground");
             //source: https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/background-of-green-and-healthy-grass-royalty-free-image-1586800097.jpg?crop=0.68819xw:1xh;center,top&resize=980:*
-            groundmat.diffuseTexture = new BABYLON.Texture("/resources/grass.jpg");
+            groundmat.diffuseTexture = new BABYLON.Texture("./resources/grass.jpg");
             groundmat.specularColor = new BABYLON.Color3(0, 0, 0);
 
             ground2.material = groundmat
@@ -167,14 +167,14 @@
             ground2.checkCollisions = true;
 
             // sprite for starting message and control instructions
-            const spriteManagerStartMessage = new BABYLON.SpriteManager("StartMessage", "/resources/StartMessage.png", 2000, { width: 1024, height: 1024 });
+            const spriteManagerStartMessage = new BABYLON.SpriteManager("StartMessage", "./resources/StartMessage.png", 2000, { width: 1024, height: 1024 });
             const StartMessage = new BABYLON.Sprite("StartMessage", spriteManagerStartMessage);
             StartMessage.width = 10;
             StartMessage.height = 10;
             StartMessage.position = new BABYLON.Vector3(30, -10, 27);
 
             // load rocks
-            BABYLON.SceneLoader.ImportMesh("", "/resources/", "Rock.babylon", scene, function (newMeshes) {
+            BABYLON.SceneLoader.ImportMesh("", "./resources/", "Rock.babylon", scene, function (newMeshes) {
                 // orginal rock: mesh made in Blender
                 var Rock = newMeshes[0];
                 Rock.position = new BABYLON.Vector3(59, -9.5, 14);
@@ -237,7 +237,7 @@
             });
 
             // forest: texture made in Gimp
-            const spriteManagerTrees = new BABYLON.SpriteManager("treesManager", "/resources/TreeSprite.png", 2000, { width: 256, height: 256 });
+            const spriteManagerTrees = new BABYLON.SpriteManager("treesManager", "./resources/TreeSprite.png", 2000, { width: 256, height: 256 });
             // forest far
             for (i = 0; i < 600; i++) {
                 const tree = new BABYLON.Sprite("tree", spriteManagerTrees);
@@ -282,7 +282,7 @@
             // hedge base block
             const hedgeFaces = new BABYLON.StandardMaterial("hedgeFaces");
             // source: https://4.bp.blogspot.com/-qrCXlWp4Pto/VfgzWf8DNmI/AAAAAAAAIHU/5EV0yrSayUs/s640/Hedge%2BSep%2Btexture%2B%25281%2Bof%2B1%2529%2Bseamless.jpg
-            hedgeFaces.diffuseTexture = new BABYLON.Texture("/resources/bush.jpg");
+            hedgeFaces.diffuseTexture = new BABYLON.Texture("./resources/bush.jpg");
             hedgeFaces.ambientColor = new BABYLON.Color3(0.4, 0.4, 0.4)
             const hedge = new BABYLON.MeshBuilder.CreateTiledBox("hedge", { width: 3.2, height: 15, depth: 3.2, tileSize: 1.5, tileWidth: 1.5 })
             hedge.position = new BABYLON.Vector3(55, -9.5, 15);
@@ -345,7 +345,7 @@
             const jumpStart = new BABYLON.MeshBuilder.CreateBox("jumpStart", { width: 3, height: 3.2, depth: 16 })
             jumpStart.material = new BABYLON.StandardMaterial("Mat", scene);
             // source: Babylon textures and resources: https://playground.babylonjs.com/textures/crate.png
-            jumpStart.material.diffuseTexture = new BABYLON.Texture("/resources/crate.png", scene);
+            jumpStart.material.diffuseTexture = new BABYLON.Texture("./resources/crate.png", scene);
             jumpStart.material.ambientColor = new BABYLON.Color3(0.2, 0.2, 0.2)
             jumpStart.position = new BABYLON.Vector3(-25, -9, -45.8)
             jumpStart.rotation.z = Math.PI / 2
@@ -357,7 +357,7 @@
             const jumpEnd = new BABYLON.MeshBuilder.CreateBox("jumpStart", { width: 4.5, height: 3.2, depth: 19.2 })
             jumpEnd.material = new BABYLON.StandardMaterial("Mat", scene);
             // source: Babylon textures and resources: https://playground.babylonjs.com/textures/crate.png
-            jumpEnd.material.diffuseTexture = new BABYLON.Texture("/resources/crate.png", scene);
+            jumpEnd.material.diffuseTexture = new BABYLON.Texture("./resources/crate.png", scene);
             jumpEnd.material.ambientColor = new BABYLON.Color3(0.2, 0.2, 0.2)
             jumpEnd.position = new BABYLON.Vector3(10.2, -9, -44.2)
             jumpEnd.rotation.z = Math.PI / 2
@@ -389,7 +389,7 @@
             platform1.rotation.y = Math.PI / 4
             platform1.position = new BABYLON.Vector3(-21, -8, -51)
             platform1.material = new BABYLON.StandardMaterial("Mat", scene);
-            platform1.material.diffuseTexture = new BABYLON.Texture("/resources/rockyPlatform.jpg", scene);
+            platform1.material.diffuseTexture = new BABYLON.Texture("./resources/rockyPlatform.jpg", scene);
             platform1.material.ambientColor = new BABYLON.Color3(0.2, 0.2, 0.2)
             platform1.checkCollisions = true
             shadowGenerator.getShadowMap().renderList.push(platform1);
@@ -478,7 +478,7 @@
 
             // Texture of each particle
             // source: https://www.babylonjs-playground.com/textures/flare.png
-            particleSystem.particleTexture = new BABYLON.Texture("/resources/particle.png", scene);
+            particleSystem.particleTexture = new BABYLON.Texture("./resources/particle.png", scene);
 
             // Colors of all particles
             particleSystem.color1 = new BABYLON.Color4(1.0, 0.8, 0.7, 1.0);
@@ -518,7 +518,7 @@
                 } else if (colMesh.uniqueId === FinishLineMesh.uniqueId) { // activate end message if intersect end mesh
                     particleSystem.start();
                     particleSystem2.start();
-                    const spriteManagerEndMessage = new BABYLON.SpriteManager("EndMessageManager", "/resources/EndingMessage.png", 2000, { width: 1024, height: 1024 });
+                    const spriteManagerEndMessage = new BABYLON.SpriteManager("EndMessageManager", "./resources/EndingMessage.png", 2000, { width: 1024, height: 1024 });
                     const EndMessage = new BABYLON.Sprite("EndMessage", spriteManagerEndMessage);
                     EndMessage.width = 10;
                     EndMessage.height = 10;
